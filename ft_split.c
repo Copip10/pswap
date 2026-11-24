@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static	int	count_word(char *str, char sep)
+static int	count_word(char *str, char sep)
 {
 	int	i;
 	int	count;
@@ -87,3 +87,4 @@ char	**ft_split(char const *s, char c)
 	dest[count] = NULL;
 	return (dest);
 }
+

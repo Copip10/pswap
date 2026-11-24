@@ -1,11 +1,14 @@
 #include "push_swap.h"
 
-f_element   *f_start_node(int number)
+f_element   *f_start_node(int number, int opt)
 {
     f_element   *new;
 
     new = malloc(sizeof(*new));
-    new->i_number = number;
+    if (opt == 0)
+        return new;
+    else
+        new->i_number = number;
     new->next = NULL;
     return new;
 }
@@ -25,16 +28,25 @@ void print_all_chain(f_element  *node_top)
 }
 
 
-// static int  generate_chain(char **argv)
-// {
+int	main(int argc, char **argv)
+{
+	int i ;
+	
+	f_element *lst_top_a;
 
-    
+	//lst_top_a = f_start_node(0, 0);
+	i = split_and_fill(argc, argv, &lst_top_a);
+	if (i != 1)
+		printf("Error\n");
 
-// }
-
-
+	
+	print_all_chain(lst_top_a);
+	
+	return 1;
+}
 
 // int main(int argc, char **argv)
+
 // {
 //     f_element *monmaillon;
 //     f_element *monmaillon1;

@@ -28,8 +28,9 @@ void    rrr(f_element **node_top_a, f_element **node_top_b);
 
 char	**ft_split(char const *s, char c);
 int	ft_atoi(char *str);
-f_element   *f_start_node(int number);
+f_element   *f_start_node(int number, int opt);
 void print_all_chain(f_element  *node_top);
-
+int	check_double(f_element **chain);
+int	split_and_fill(int ac, char **av, f_element **mychain);
 
 #endif
