@@ -19,6 +19,7 @@ void    sa(f_element *node_top);
 void    sb(f_element *node_top);
 void    ss(f_element *node_top_a, f_element *node_top_b);
 void    pa(f_element **node_top_a, f_element **node_top_b);
+void    pb(f_element **node_top_a, f_element **node_top_b);
 void    ra(f_element **node_top_a);
 void    rb(f_element **node_top_b);
 void    rr(f_element **node_top_a, f_element **node_top_b);
