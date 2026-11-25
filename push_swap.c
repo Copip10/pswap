@@ -28,22 +28,22 @@ void print_all_chain(f_element  *node_top)
 }
 
 
-int	main(int argc, char **argv)
-{
-	int i ;
+// int	main(int argc, char **argv)
+// {
+// 	int i ;
 	
-	f_element *lst_top_a;
+// 	f_element *lst_top_a;
 
-	//lst_top_a = f_start_node(0, 0);
-	i = split_and_fill(argc, argv, &lst_top_a);
-	if (i != 1)
-		printf("Error\n");
+// 	//lst_top_a = f_start_node(0, 0);
+// 	i = split_and_fill(argc, argv, &lst_top_a);
+// 	if (i != 1)
+// 		printf("Error\n");
 
 	
-	print_all_chain(lst_top_a);
+// 	print_all_chain(lst_top_a);
 	
-	return 1;
-}
+// 	return 1;
+// }
 
 // int main(int argc, char **argv)
 
