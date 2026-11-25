@@ -30,18 +30,18 @@ void print_all_chain(f_element  *node_top)
 
 int	main(int argc, char **argv)
 {
+	int i;
+	int func_complex;
 
-	int i ;
-	
+    func_complex = read_arg(argv);
+
 	f_element *lst_top_a = NULL;
 	f_element *lst_top_b = NULL;
 
 	i = split_and_fill(argc, argv, &lst_top_a);
     
 	if (i != 1)
-    {
 		printf("Error\n");
-    }
 
 	if (is_good_order(lst_top_a) == 1)
 		return (0);
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	extrac_min(&lst_top_a, &lst_top_b);
 	
 	print_all_chain(lst_top_a);
+    printf("%d", func_complex);
 	
 	return 1;
 }
