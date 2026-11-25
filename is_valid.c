@@ -22,3 +22,21 @@ int	is_good_order(f_element *chain_a)
 	}
 	return (1);
 }
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	check_arg(char *argv)
+{
+	if (ft_strcmp(argv, "--simple") == 0 || ft_strcmp(argv, "--medium") == 0 || ft_strcmp(argv, "--complex") == 0 
+	|| ft_strcmp(argv, "--adaptive") == 0 || ft_strcmp(argv, "--bench") == 0 )
+		return 1;
+	return 0;
+}

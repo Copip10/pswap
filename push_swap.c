@@ -28,58 +28,32 @@ void print_all_chain(f_element  *node_top)
 }
 
 
-// int	main(int argc, char **argv)
-// {
-// 	int i ;
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+    {
+
+        printf("Error1\n");
+		return (0);
+    }
+	int i ;
 	
-// 	f_element *lst_top_a;
+	f_element *lst_top_a = NULL;
+	f_element *lst_top_b = NULL;
 
-// 	//lst_top_a = f_start_node(0, 0);
-// 	i = split_and_fill(argc, argv, &lst_top_a);
-// 	if (i != 1)
-// 		printf("Error\n");
+	i = split_and_fill(argc, argv, &lst_top_a);
+    //print_all_chain(lst_top_a);
+	if (i != 1)
+    {
+		printf("Error\n");
+    }
 
+	if (is_good_order(lst_top_a) == 1)
+		return (0);
 	
-// 	print_all_chain(lst_top_a);
+	extrac_min(&lst_top_a, &lst_top_b);
 	
-// 	return 1;
-// }
-
-// int main(int argc, char **argv)
-
-// {
-//     f_element *monmaillon;
-//     f_element *monmaillon1;
-//     f_element *monmaillon2;
-//     f_element *monmaillon3;
-
-//     monmaillon = f_start_node(3);
-//     monmaillon1 = f_start_node(5);
-//     monmaillon2 = f_start_node(6);
-//     monmaillon3 = f_start_node(7);
-//     monmaillon->next = monmaillon1;
-//     monmaillon1->next = monmaillon2;
-
-//     print_all_chain(monmaillon);
-//     ////////////////////////////////////////////////////////////////////
-
-//     sa(monmaillon);
-//     print_all_chain(monmaillon);
-
-//     ///////////////////////////////////////////////////////////////////
-
-//     pa(&monmaillon, &monmaillon3);
-//     print_all_chain(monmaillon);
-
-//     ///////////////////////////////////////////////////////////////////
-    
-//     ra(&monmaillon);
-//     print_all_chain(monmaillon);
-
-//     ///////////////////////////////////////////////////////////////////
-    
-//     rra(&monmaillon);
-//     print_all_chain(monmaillon);
-
-//     return 1;
-// }
+	print_all_chain(lst_top_a);
+	
+	return 1;
+}

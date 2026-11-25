@@ -73,27 +73,3 @@ void	extrac_min(f_element **a, f_element **b)
 	while (*b)
 		pa(a, b);
 }
-int	main(int argc, char **argv)
-{
-
-	// if (argc < 2)
-	// 	return (0);
-	int i ;
-	
-	f_element *lst_top_a = NULL;
-	f_element *lst_top_b = NULL;
-
-	//lst_top_a = f_start_node(0, 0);
-	i = split_and_fill(argc, argv, &lst_top_a);
-	if (i != 1)
-		printf("Error\n");
-
-	if (is_good_order(lst_top_a) == 1)
-		return (0);
-	
-	extrac_min(&lst_top_a, &lst_top_b);
-	
-	print_all_chain(lst_top_a);
-	
-	return 1;
-}

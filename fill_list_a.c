@@ -44,15 +44,21 @@ int clean(char**str)
     while(str[i])
     {
 		j = 0;
-		if (str[i][j] == '-' || str[i][j] == '+')
-			j++;
-		while (str[i][j])
+		if (check_arg(str[i]) == 1)
+			i++;
+		else
 		{
-			if (str[i][j] < '0' || str[i][j] > '9')
-				return (0);
+			if (str[i][j] == '-' || str[i][j] == '+')
 			j++;
+			while (str[i][j])
+			{
+				if (str[i][j] < '0' || str[i][j] > '9')
+					return (0);
+				j++;
+			}
+			i++;
 		}
-		i++;
+		
     }
 	
     return (1);
@@ -97,8 +103,13 @@ int	split_and_fill(int ac, char **av, f_element **mychain)
 			return (free(str_mult_val), 0);
 		while (str_mult_val[i])
 		{
-			start_fill(ft_atoi(str_mult_val[i]), mychain);
-			i++;
+			if (check_arg(str_mult_val[i]) == 1)
+				i++;
+			else
+			{
+				start_fill(ft_atoi(str_mult_val[i]), mychain);
+				i++;
+			}
 		}
 		j++;
 		free(str_mult_val);

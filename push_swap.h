@@ -29,6 +29,7 @@ void    rrb(f_element **node_top_b, int print);
 void    rrr(f_element **node_top_a, f_element **node_top_b);
 
 int	is_good_order(f_element *chain_a);
+int	check_arg(char *argv);
 char	**ft_split(char const *s, char c);
 int	ft_atoi(char *str);
 f_element   *f_start_node(int number, int opt);
