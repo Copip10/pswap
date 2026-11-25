@@ -58,9 +58,7 @@ int clean(char**str)
 			}
 			i++;
 		}
-		
     }
-	
     return (1);
 }
 
@@ -75,7 +73,7 @@ int	f_add_node(f_element **chain, f_element **node)
 	return 1;
 }
 
-int	start_fill(int number, f_element **chain)
+int	start_fill(int number, f_element **chain, int (*func)(f_element **, f_element **))
 {
 	f_element	*tmp;
 
@@ -83,38 +81,34 @@ int	start_fill(int number, f_element **chain)
 	if (*chain == NULL)
 		*chain = tmp;
 	else
-		f_add_node(chain, &tmp);
+		func(chain, &tmp);
 	return 1;
 }
 
-int	split_and_fill(int ac, char **av, f_element **mychain)
+int	split_and_fill(int ac, char **av, f_element **chain)
 {
 	int j;
 	int	i;
 	char **str_mult_val;
-	
+
 	i = 0;
 	j = 1;
 	while (av[j])
 	{
 		i = 0;
 		str_mult_val = ft_split(av[j], ' ');
-		if ((clean(str_mult_val)) != 1)
+		if (clean(str_mult_val) != 1)
 			return (free(str_mult_val), 0);
 		while (str_mult_val[i])
 		{
-			if (check_arg(str_mult_val[i]) == 1)
-				i++;
-			else
-			{
-				start_fill(ft_atoi(str_mult_val[i]), mychain);
-				i++;
-			}
+			if (check_arg(str_mult_val[i]) == 0)
+				start_fill(ft_atoi(str_mult_val[i]), chain, f_add_node);
+			i++;
 		}
 		j++;
 		free(str_mult_val);
 	}
-	if (check_double(mychain) != 1)
+	if (check_double(chain) != 1)
 		return 0;
 	return 1;
 }

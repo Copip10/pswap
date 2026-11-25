@@ -30,19 +30,14 @@ void print_all_chain(f_element  *node_top)
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
-    {
 
-        printf("Error1\n");
-		return (0);
-    }
 	int i ;
 	
 	f_element *lst_top_a = NULL;
 	f_element *lst_top_b = NULL;
 
 	i = split_and_fill(argc, argv, &lst_top_a);
-    //print_all_chain(lst_top_a);
+    
 	if (i != 1)
     {
 		printf("Error\n");

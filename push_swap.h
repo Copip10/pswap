@@ -37,5 +37,6 @@ void print_all_chain(f_element  *node_top);
 int	check_double(f_element **chain);
 int	split_and_fill(int ac, char **av, f_element **mychain);
 void	extrac_min(f_element **a, f_element **b);
+int	start_fill(int number, f_element **chain, int (*func)(f_element **, f_element **));
 
 #endif

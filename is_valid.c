@@ -14,7 +14,7 @@
 
 int	is_good_order(f_element *chain_a)
 {
-	while (chain_a->next != NULL)
+	while (chain_a != NULL && chain_a->next != NULL)
 	{
 		if (chain_a->i_number > chain_a->next->i_number)
 			return (0);
@@ -33,10 +33,17 @@ int	ft_strcmp(char *s1, char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
+// int	f_add_node_top(f_element **chain, f_element **node)
+// {
+// 	(*node)->next = *chain;
+// 	*chain = *node;
+// 	return (1);
+// }
 int	check_arg(char *argv)
 {
-	if (ft_strcmp(argv, "--simple") == 0 || ft_strcmp(argv, "--medium") == 0 || ft_strcmp(argv, "--complex") == 0 
-	|| ft_strcmp(argv, "--adaptive") == 0 || ft_strcmp(argv, "--bench") == 0 )
-		return 1;
-	return 0;
+	if (ft_strcmp(argv, "--simple") == 0 || ft_strcmp(argv, "--medium") == 0
+		|| ft_strcmp(argv, "--complex") == 0 || ft_strcmp(argv, "--adaptive") == 0
+		|| ft_strcmp(argv, "--bench") == 0)
+		return (1);
+	return (0);
 }
