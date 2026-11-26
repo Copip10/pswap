@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leode-fr <leode-fr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 10:59:31 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 13:56:13 by antmacha         ###   ########.fr       */
+/*   Created: 2026/11/26 10:59:31 by leode-fr          #+#    #+#             */
+/*   Updated: 2026/11/26 17:33:09 by leode-fr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lst_size(f_element * lst)
+int	lst_size(f_element *lst)
 {
 	int	i;
 
@@ -30,41 +30,80 @@ int	ft_sqrt(int nb)
 	int	i;
 
 	i = 0;
-	while ((i * i) <= nb)
+	while ((i * i) < nb)
 	{
 		i++;
 	}
 	return (i);
 }
 
-void	chunk_based_sort(f_element * *a, f_element * *b)
+static int	find_index_min_pos(f_element *lst)
 {
-	int	sqrt = lst_size(*a);
-	int	chunck = lst_size(*a) / sqrt;
+	int	min;
+	int	pos;
+	int	i;
+
+	i = 0;
+	pos = 0;
+	min = lst->index;
+	while (lst != NULL)
+	{
+		if (lst->i_number < min)
+		{
+			min = lst->i_number;
+			pos = i;
+		}
+		lst = lst->next;
+		i++;
+	}
+	return (pos);
 }
-// int	main(int argc, char **argv)
-// {
-// 	int i;
-// 	int func_complex;
 
-//     func_complex = read_arg(argv);
+void	fill_index(f_element **a)
+{
+	f_element	*curr;
+	f_element	*checking;
+	int			index;
 
-// 	f_element *lst_top_a = NULL;
-// 	f_element *lst_top_b = NULL;
+	curr = *a;
+	while (curr)
+	{
+		index = 0;
+		checking = *a;
+		while (checking)
+		{
+			if (curr->i_number > checking->i_number)
+				index++;
+			curr->index = index;
+			checking = checking->next;
+		}
+		curr = curr->next;
+	}
+}
 
-// 	i = split_and_fill(argc, argv, &lst_top_a);
+void	chunk_based_sort(f_element **a, f_element **b)
+{
+	int	chunk;
+	int	sqrt;
+	int	i;
+	int	j;
+	int	pos;
 
-// 	if (i != 1)
-// 		printf("Error\n");
-
-// 	if (is_good_order(lst_top_a) == 1)
-// 		return (0);
-
-// 	// extrac_min(&lst_top_a, &lst_top_b);
-
-// 	// print_all_chain(lst_top_a);
-// 	int sqrt = ft_sqrt(lst_size(lst_top_a));
-//     printf("%d\n", sqrt);
-
-// 	return 1;
-// }
+	fill_index(a);
+	i = 0;
+	j = 0;
+	chunk = ft_sqrt(lst_size(*a));
+	sqrt = chunk;
+	while (*a)
+	{
+		while (i < chunk && *a)
+		{
+			if ((*a)->index >= i && (*a)->index < chunk)
+				pb(a, b);
+			i++;
+		}
+		chunk += sqrt;
+	}
+	while (*b)
+		pa(a, b);
+}
