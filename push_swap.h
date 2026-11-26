@@ -6,7 +6,7 @@
 /*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 14:32:32 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 14:37:16 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/26 18:09:29 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct f_element
 
 	int					i_number;
 	struct f_element	*next;
+	int					index;
 
 }	f_element;
 
@@ -45,11 +46,12 @@ int		ft_atoi(char *str);
 f_element * f_start_node(int number, int opt);
 void	print_all_chain(f_element * node_top);
 int		check_double(f_element * *chain);
-int		split_and_fill(int ac, char **av, f_element * *mychain);
+int		split_and_fill(char **av, f_element * *mychain);
 void	extrac_min(f_element * *a, f_element * *b);
 int		start_fill(int number, f_element * *chain, int (*func)(f_element * *, f_element * *));
 int		read_arg(char **argv);
 char	*ft_strstr(char *haystack, char *needle);
 int		ft_strcmp(char *s1, char *s2);
-
+void	com_start_complex(f_element * *chain_a, f_element * *chain_b);
+int		lst_size(f_element * lst);
 #endif

@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leode-fr <leode-fr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/26 10:59:31 by leode-fr          #+#    #+#             */
-/*   Updated: 2026/11/26 17:33:09 by leode-fr         ###   ########.fr       */
+/*   Created: 2026/11/26 10:59:31 by antmacha          #+#    #+#             */
+/*   Updated: 2026/11/26 18:10:44 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	lst_size(f_element *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
 
 int	ft_sqrt(int nb)
 {
@@ -37,7 +24,7 @@ int	ft_sqrt(int nb)
 	return (i);
 }
 
-static int	find_index_min_pos(f_element *lst)
+static int	find_index_min_pos(f_element * lst)
 {
 	int	min;
 	int	pos;
@@ -59,11 +46,11 @@ static int	find_index_min_pos(f_element *lst)
 	return (pos);
 }
 
-void	fill_index(f_element **a)
+void	fill_index(f_element * *a)
 {
-	f_element	*curr;
-	f_element	*checking;
-	int			index;
+	f_element * curr;
+	f_element * checking;
+	int	index;
 
 	curr = *a;
 	while (curr)
@@ -81,7 +68,7 @@ void	fill_index(f_element **a)
 	}
 }
 
-void	chunk_based_sort(f_element **a, f_element **b)
+void	chunk_based_sort(f_element * *a, f_element * *b)
 {
 	int	chunk;
 	int	sqrt;

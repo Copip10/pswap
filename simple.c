@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/24 16:02:06 by leode-fr          #+#    #+#             */
-/*   Updated: 2026/11/26 11:06:04 by leode-fr         ###   ########.fr       */
+/*   Created: 2026/11/24 16:02:06 by antmacha          #+#    #+#             */
+/*   Updated: 2026/11/26 17:50:25 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	lst_size(f_element *lst)
+int	lst_size(f_element * lst)
 {
-	int	i;	
+	int	i;
 
 	i = 0;
 	while (lst != NULL)
@@ -24,12 +24,12 @@ static int	lst_size(f_element *lst)
 	}
 	return (i);
 }
-static int	find_min_pos(f_element *lst)
+
+static int	find_min_pos(f_element * lst)
 {
-	
-	int min;
-	int pos;
-	int i;
+	int	min;
+	int	pos;
+	int	i;
 
 	i = 0;
 	pos = 0;
@@ -47,11 +47,11 @@ static int	find_min_pos(f_element *lst)
 	return (pos);
 }
 
-void	extrac_min(f_element **a, f_element **b)
+void	extrac_min(f_element * *a, f_element * *b)
 {
-	int pos;
+	int	pos;
 	int	size;
-	
+
 	while (*a)
 	{
 		size = lst_size(*a);
