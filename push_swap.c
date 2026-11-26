@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 13:56:00 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 18:25:03 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/26 18:35:36 by leode-fr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ int	start_resolve(f_element * *chain_a, f_element * *chain_b, int func_complex)
 	return (1);
 }
 
-int	main(int argc, char **argv)
-{
-	int	i;
-	int	func_complex;
+// int	main(int argc, char **argv)
+// {
+// 	int	i;
+// 	int	func_complex;
 
-	func_complex = read_arg(argv);
-	f_element * lst_top_a = NULL;
-	f_element * lst_top_b = NULL;
-	i = split_and_fill(argv, &lst_top_a);
-	if (i != 1)
-		write(2, "Error\n", 6);
-	if (is_good_order(lst_top_a) == 1)
-		return (0);
-	start_resolve(&lst_top_a, &lst_top_b, func_complex);
-	print_all_chain(lst_top_a);
-	return (0);
-}
+// 	func_complex = read_arg(argv);
+// 	f_element * lst_top_a = NULL;
+// 	f_element * lst_top_b = NULL;
+// 	i = split_and_fill(argv, &lst_top_a);
+// 	if (i != 1)
+// 		write(2, "Error\n", 6);
+// 	if (is_good_order(lst_top_a) == 1)
+// 		return (0);
+// 	start_resolve(&lst_top_a, &lst_top_b, func_complex);
+// 	print_all_chain(lst_top_a);
+// 	return (0);
+// }

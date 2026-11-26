@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 10:59:31 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 18:10:44 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/26 19:52:55 by leode-fr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ int	ft_sqrt(int nb)
 	return (i);
 }
 
-static int	find_index_min_pos(f_element * lst)
+static int	find_index_max_pos(f_element * lst)
 {
-	int	min;
+	int	max;
 	int	pos;
 	int	i;
 
 	i = 0;
 	pos = 0;
-	min = lst->index;
+	max = lst->index;
 	while (lst != NULL)
 	{
-		if (lst->i_number < min)
+		if (lst->i_number > max)
 		{
-			min = lst->i_number;
+			max = lst->i_number;
 			pos = i;
 		}
 		lst = lst->next;
@@ -71,26 +71,61 @@ void	fill_index(f_element * *a)
 void	chunk_based_sort(f_element * *a, f_element * *b)
 {
 	int	chunk;
-	int	sqrt;
+	int sqrt;
 	int	i;
-	int	j;
-	int	pos;
+	int pos;
 
 	fill_index(a);
 	i = 0;
-	j = 0;
 	chunk = ft_sqrt(lst_size(*a));
 	sqrt = chunk;
 	while (*a)
 	{
 		while (i < chunk && *a)
 		{
-			if ((*a)->index >= i && (*a)->index < chunk)
+			if ((*a)->index < chunk )
+			{
 				pb(a, b);
-			i++;
+				i++;
+			}
+			else
+				ra(a, 1);
 		}
 		chunk += sqrt;
 	}
 	while (*b)
+	{
+		pos = find_index_max_pos(*b);
+		if(pos <= lst_size(*b) / 2)
+			while (pos > 0)
+			{
+				rb(b, 1);
+				pos--;	
+			}
+		else if (pos > lst_size(*b) / 2)
+			while (pos < lst_size(*b))
+			{
+				rrb(b, 1);
+				pos++;
+			}
 		pa(a, b);
+	}
+}
+int	main(int argc, char **argv)
+{
+	int	i;
+	// int	func_complex;
+
+	// func_complex = read_arg(argv);
+	f_element * lst_top_a = NULL;
+	f_element * lst_top_b = NULL;
+	i = split_and_fill(argv, &lst_top_a);
+	if (i != 1)
+		write(2, "Error\n", 6);
+	if (is_good_order(lst_top_a) == 1)
+		return (0);
+	// start_resolve(&lst_top_a, &lst_top_b, func_complex);
+	chunk_based_sort(&lst_top_a, &lst_top_b);
+	print_all_chain(lst_top_a);
+	return (0);
 }
