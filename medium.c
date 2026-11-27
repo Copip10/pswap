@@ -6,13 +6,13 @@
 /*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 10:59:31 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 19:52:55 by leode-fr         ###   ########.fr       */
+/*   Updated: 2026/11/27 15:36:15 by leode-fr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sqrt(int nb)
+static int	ft_sqrt(int nb)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ static int	find_index_max_pos(f_element * lst)
 	return (pos);
 }
 
-void	fill_index(f_element * *a)
+static void	fill_index(f_element * *a)
 {
 	f_element * curr;
 	f_element * checking;
@@ -67,13 +67,34 @@ void	fill_index(f_element * *a)
 		curr = curr->next;
 	}
 }
+static void	fill_list_a(f_element **a, f_element **b)
+{
+	int pos;
+	
+	while (*b)
+	{
+		pos = find_index_max_pos(*b);
+		if(pos <= lst_size(*b) / 2)
+			while (pos > 0)
+			{
+				rb(b, 1);
+				pos--;	
+			}
+		else if (pos > lst_size(*b) / 2)
+			while (pos < lst_size(*b))
+			{
+				rrb(b, 1);
+				pos++;
+			}
+		pa(a, b);
+	}
+}
 
 void	chunk_based_sort(f_element * *a, f_element * *b)
 {
 	int	chunk;
 	int sqrt;
 	int	i;
-	int pos;
 
 	fill_index(a);
 	i = 0;
@@ -93,23 +114,7 @@ void	chunk_based_sort(f_element * *a, f_element * *b)
 		}
 		chunk += sqrt;
 	}
-	while (*b)
-	{
-		pos = find_index_max_pos(*b);
-		if(pos <= lst_size(*b) / 2)
-			while (pos > 0)
-			{
-				rb(b, 1);
-				pos--;	
-			}
-		else if (pos > lst_size(*b) / 2)
-			while (pos < lst_size(*b))
-			{
-				rrb(b, 1);
-				pos++;
-			}
-		pa(a, b);
-	}
+	fill_list_a(a, b);
 }
 int	main(int argc, char **argv)
 {
