@@ -116,21 +116,3 @@ void	chunk_based_sort(f_element * *a, f_element * *b)
 	}
 	fill_list_a(a, b);
 }
-int	main(int argc, char **argv)
-{
-	int	i;
-	// int	func_complex;
-
-	// func_complex = read_arg(argv);
-	f_element * lst_top_a = NULL;
-	f_element * lst_top_b = NULL;
-	i = split_and_fill(argv, &lst_top_a);
-	if (i != 1)
-		write(2, "Error\n", 6);
-	if (is_good_order(lst_top_a) == 1)
-		return (0);
-	// start_resolve(&lst_top_a, &lst_top_b, func_complex);
-	chunk_based_sort(&lst_top_a, &lst_top_b);
-	print_all_chain(lst_top_a);
-	return (0);
-}

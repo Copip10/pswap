@@ -54,4 +54,6 @@ char	*ft_strstr(char *haystack, char *needle);
 int		ft_strcmp(char *s1, char *s2);
 void	com_start_complex(f_element * *chain_a, f_element * *chain_b);
 int		lst_size(f_element * lst);
+void	chunk_based_sort(f_element * *a, f_element * *b);
+void	print_all_chain(f_element * node_top); // to delete
 #endif
