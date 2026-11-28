@@ -6,16 +6,16 @@
 /*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 15:47:05 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 17:51:00 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/28 11:12:38 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_double(f_element * *chain)
+int	check_double(t_element * *chain)
 {
-	f_element * current;
-	f_element * previus;
+	t_element * current;
+	t_element * previus;
 	current = *chain;
 	while (current)
 	{
@@ -31,39 +31,9 @@ int	check_double(f_element * *chain)
 	return (1);
 }
 
-int	clean(char **str)
+int	f_add_node(t_element * *chain, t_element * *node)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	if (str[i] == NULL)
-		return (0);
-	while (str[i])
-	{
-		j = 0;
-		if (check_arg(str[i]) == 1)
-			i++;
-		else
-		{
-			if (str[i][j] == '-' || str[i][j] == '+')
-				j++;
-			while (str[i][j])
-			{
-				if (str[i][j] < '0' || str[i][j] > '9')
-					return (0);
-				j++;
-			}
-			i++;
-		}
-	}
-	return (1);
-}
-
-int	f_add_node(f_element * *chain, f_element * *node)
-{
-	f_element * iterate;
+	t_element * iterate;
 	iterate = (*chain);
 	while (iterate->next != NULL)
 		iterate = iterate->next;
@@ -71,9 +41,10 @@ int	f_add_node(f_element * *chain, f_element * *node)
 	return (1);
 }
 
-int	start_fill(int number, f_element * *chain, int (*func)(f_element * *, f_element * *))
+int	start_fill(long number, t_element * *chain, int (*func)(t_element * *, t_element * *))
 {
-	f_element * tmp;
+	t_element * tmp;
+	number = (int) number;
 	tmp = f_start_node(number, 1);
 	if (*chain == NULL)
 		*chain = tmp;
@@ -82,7 +53,24 @@ int	start_fill(int number, f_element * *chain, int (*func)(f_element * *, f_elem
 	return (1);
 }
 
-int	split_and_fill(char **av, f_element * *chain)
+int	is_it_int(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (check_arg(str[i]) == 0)
+		{
+			if (ft_atoi(str[i]) > 2147483647 || ft_atoi(str[i]) < -2147483648)
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	split_and_fill(char **av, t_element * *chain)
 {
 	int		j;
 	int		i;
@@ -94,8 +82,8 @@ int	split_and_fill(char **av, f_element * *chain)
 	{
 		i = 0;
 		str_mult_val = ft_split(av[j], ' ');
-		if (clean(str_mult_val) != 1)
-			return (free(str_mult_val), 0);
+		if (clean(str_mult_val) != 1 || is_it_int(str_mult_val) != 1)
+			return (free_split(str_mult_val), 0);
 		while (str_mult_val[i])
 		{
 			if (check_arg(str_mult_val[i]) == 0)
@@ -103,7 +91,7 @@ int	split_and_fill(char **av, f_element * *chain)
 			i++;
 		}
 		j++;
-		free(str_mult_val);
+		free_split(str_mult_val);
 	}
 	if (check_double(chain) != 1)
 		return (0);

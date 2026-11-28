@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/28 10:02:46 by antmacha          #+#    #+#             */
+/*   Updated: 2026/11/28 10:02:46 by antmacha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	count_word(char *str, char sep)
@@ -66,7 +78,7 @@ static int	fill_dest(char **dest, char const *s, int count, char c)
 			free_dests(dest, j);
 			return (0);
 		}
-		dest[j] = ft_strncpy((char *)&s[i], dest[j], k);
+		dest[j] = ft_strncpy((char *) & s[i], dest[j], k);
 		i += k;
 		j++;
 	}
@@ -78,7 +90,7 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	char	**dest;
 
-	count = count_word((char *)s, c);
+	count = count_word((char *) s, c);
 	dest = malloc(sizeof(char *) * (count + 1));
 	if (dest == NULL)
 		return (NULL);
@@ -87,4 +99,3 @@ char	**ft_split(char const *s, char c)
 	dest[count] = NULL;
 	return (dest);
 }
-

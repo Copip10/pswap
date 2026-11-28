@@ -6,7 +6,7 @@
 /*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 14:39:30 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 18:03:45 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/28 10:12:07 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ i++;
 return (full_number % 10);
 }
 
-int	*com_recover_values(f_element * *chain, int *tab, int digit_index)
+int	*com_recover_values(t_element * *chain, int *tab, int digit_index)
 {
-f_element * iterate;
+t_element * iterate;
 iterate = *chain;
 int	i;
 
@@ -61,12 +61,12 @@ return (tab);
 }
 */
 
-void	com_fill_index(f_element * *chain)
+void	com_fill_index(t_element * *chain)
 {
-	f_element * iterate;
+	t_element * iterate;
 	int	to_stock;
 
-	f_element * curr;
+	t_element * curr;
 	iterate = *chain;
 	curr = iterate;
 	while (curr)
@@ -89,7 +89,7 @@ int	com_get_bit(int index, int bit)
 	return ((index >> bit) & 1);
 }
 
-void	com_one_pass(f_element * *a, f_element * *b, int size, int bit)
+void	com_sort(t_element * *a, t_element * *b, int size, int bit)
 {
 	int	count;
 
@@ -119,7 +119,7 @@ int	com_maxbits(int size)
 	return (i);
 }
 
-void	com_start_complex(f_element * *chain_a, f_element * *chain_b)
+void	com_start_complex(t_element * *chain_a, t_element * *chain_b)
 {
 	int	size;
 	int	max_bits;
@@ -131,7 +131,7 @@ void	com_start_complex(f_element * *chain_a, f_element * *chain_b)
 	bit = 0;
 	while (bit < max_bits)
 	{
-		com_one_pass(chain_a, chain_b, size, bit);
+		com_sort(chain_a, chain_b, size, bit);
 		bit++;
 	}
 }

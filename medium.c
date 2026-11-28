@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 10:59:31 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/27 15:36:15 by leode-fr         ###   ########.fr       */
+/*   Updated: 2026/11/28 10:02:28 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_sqrt(int nb)
 	return (i);
 }
 
-static int	find_index_max_pos(f_element * lst)
+static int	find_index_max_pos(t_element * lst)
 {
 	int	max;
 	int	pos;
@@ -46,10 +46,10 @@ static int	find_index_max_pos(f_element * lst)
 	return (pos);
 }
 
-static void	fill_index(f_element * *a)
+static void	fill_index(t_element * *a)
 {
-	f_element * curr;
-	f_element * checking;
+	t_element * curr;
+	t_element * checking;
 	int	index;
 
 	curr = *a;
@@ -67,18 +67,19 @@ static void	fill_index(f_element * *a)
 		curr = curr->next;
 	}
 }
-static void	fill_list_a(f_element **a, f_element **b)
+
+static void	fill_list_a(t_element * *a, t_element * *b)
 {
-	int pos;
-	
+	int	pos;
+
 	while (*b)
 	{
 		pos = find_index_max_pos(*b);
-		if(pos <= lst_size(*b) / 2)
+		if (pos <= lst_size(*b) / 2)
 			while (pos > 0)
 			{
 				rb(b, 1);
-				pos--;	
+				pos--;
 			}
 		else if (pos > lst_size(*b) / 2)
 			while (pos < lst_size(*b))
@@ -90,10 +91,10 @@ static void	fill_list_a(f_element **a, f_element **b)
 	}
 }
 
-void	chunk_based_sort(f_element * *a, f_element * *b)
+void	chunk_based_sort(t_element * *a, t_element * *b)
 {
 	int	chunk;
-	int sqrt;
+	int	sqrt;
 	int	i;
 
 	fill_index(a);
@@ -104,7 +105,7 @@ void	chunk_based_sort(f_element * *a, f_element * *b)
 	{
 		while (i < chunk && *a)
 		{
-			if ((*a)->index < chunk )
+			if ((*a)->index < chunk)
 			{
 				pb(a, b);
 				i++;

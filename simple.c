@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leode-fr <leode-fr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 16:02:06 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 19:21:53 by leode-fr         ###   ########.fr       */
+/*   Updated: 2026/11/28 10:13:29 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lst_size(f_element * lst)
+int	lst_size(t_element * lst)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	lst_size(f_element * lst)
 	return (i);
 }
 
-static int	find_min_pos(f_element * lst)
+static int	find_min_pos(t_element * lst)
 {
 	int	min;
 	int	pos;
@@ -47,7 +47,7 @@ static int	find_min_pos(f_element * lst)
 	return (pos);
 }
 
-void	extrac_min(f_element * *a, f_element * *b)
+void	extrac_min(t_element * *a, t_element * *b)
 {
 	int	pos;
 	int	size;

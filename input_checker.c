@@ -6,13 +6,13 @@
 /*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 12:03:12 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 18:20:07 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/28 17:53:37 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_good_order(f_element * chain_a)
+int	is_good_order(t_element * chain_a)
 {
 	while (chain_a != NULL && chain_a->next != NULL)
 	{
@@ -68,4 +68,33 @@ int	read_arg(char **argv)
 		i++;
 	}
 	return (bench_indicator + func_complexity);
+}
+
+int	clean(char **str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (str == NULL || str[i] == NULL)
+		return (0);
+	while (str[i])
+	{
+		j = 0;
+		if (check_arg(str[i]) != 1)
+		{
+			if (str[i][j] == '-' || str[i][j] == '+')
+				j++;
+			if (str[i][j] == '\0')
+				return (0);
+			while (str[i][j])
+			{
+				if (str[i][j] < '0' || str[i][j] > '9')
+					return (0);
+				j++;
+			}
+		}
+		i++;
+	}
+	return (1);
 }

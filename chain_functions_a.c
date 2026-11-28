@@ -6,16 +6,16 @@
 /*   By: antmacha <antmacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 14:16:35 by antmacha          #+#    #+#             */
-/*   Updated: 2026/11/26 14:33:24 by antmacha         ###   ########.fr       */
+/*   Updated: 2026/11/28 10:02:53 by antmacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(f_element * *node_top, int print)
+void	sa(t_element * *node_top, int print)
 {
-	f_element * first;
-	f_element * second;
+	t_element * first;
+	t_element * second;
 	if (node_top == NULL || *node_top == NULL || (*node_top)->next == NULL)
 		return ;
 	first = *node_top;
@@ -24,12 +24,15 @@ void	sa(f_element * *node_top, int print)
 	second->next = first;
 	*node_top = second;
 	if (print == 1)
+	{
 		write(1, "sa\n", 3);
+		operation_amount()[0]++;
+	}
 }
 
-void	pa(f_element * *node_top_a, f_element * *node_top_b)
+void	pa(t_element * *node_top_a, t_element * *node_top_b)
 {
-	f_element * tmp;
+	t_element * tmp;
 	if (*node_top_b == NULL)
 		return ;
 	tmp = *node_top_b;
@@ -37,12 +40,13 @@ void	pa(f_element * *node_top_a, f_element * *node_top_b)
 	tmp->next = *node_top_a;
 	*node_top_a = tmp;
 	write(1, "pa\n", 3);
+	operation_amount()[3]++;
 }
 
-void	ra(f_element * *node_top_a, int print)
+void	ra(t_element * *node_top_a, int print)
 {
-	f_element * first;
-	f_element * iterate;
+	t_element * first;
+	t_element * iterate;
 	if (*node_top_a == NULL || (*node_top_a)->next == NULL)
 		return ;
 	first = (*node_top_a);
@@ -53,13 +57,16 @@ void	ra(f_element * *node_top_a, int print)
 		iterate = iterate->next;
 	iterate->next = first;
 	if (print == 1)
+	{
 		write(1, "ra\n", 3);
+		operation_amount()[5]++;
+	}
 }
 
-void	rra(f_element * *node_top_a, int print)
+void	rra(t_element * *node_top_a, int print)
 {
-	f_element * tmp;
-	f_element * iterate;
+	t_element * tmp;
+	t_element * iterate;
 	if (*node_top_a == NULL || (*node_top_a)->next == NULL)
 		return ;
 	tmp = *node_top_a;
@@ -70,5 +77,8 @@ void	rra(f_element * *node_top_a, int print)
 	iterate->next = NULL;
 	(*node_top_a)->next = tmp;
 	if (print == 1)
+	{
 		write(1, "rra\n", 4);
+		operation_amount()[8]++;
+	}
 }
